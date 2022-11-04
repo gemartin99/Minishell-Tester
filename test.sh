@@ -180,6 +180,261 @@ else
 fi
 ((c++))
 
+COMMAND="echo"
+LINE="'hola'"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"hola\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="'echo'"
+LINE="\"hola\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="\"echo\""
+LINE="'aaa aaa'"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="'\"'\"a\"'\"'"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"'\"'\"'\"'a'\"'\"'\"'\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"'\"'\"'\"'que tal'\"'\"'\"'\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"'\"'\"'\"'$""USER $""nada $""PWD/1'\"'\"'\"'\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"'\"'\"'\"'$""USER'\"'\"'\"'\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"'\"'\"'\"$""USER\"'\"'\"'\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="'\"'\"'\"$""USER\"'\"'\"'"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="'\"'\"'\"'$""USER'\"'\"'\"'"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"\"\"\"\"$""USER\"\"\"\"\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="''''$""USER''''"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\" \" \" \" \" $""USER \" \" \" \" \""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="' ' ' ' $""USER ' ' ' '"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
 
 COMMAND="echo"
 LINE="$""USER"
@@ -198,7 +453,7 @@ fi
 ((c++))
 
 COMMAND="echo"
-LINE="$USER/1"
+LINE="'$""USER'"
 ARG="$COMMAND $LINE"
 M=$(./minishell -c "$ARG")
 B=$(bash -c "$ARG")
@@ -214,7 +469,215 @@ fi
 ((c++))
 
 COMMAND="echo"
-LINE="hola '\$USER' aaa"
+LINE="\"$""USER\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\" '$""USER' \""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="' \"$""USER\" '"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"$""USER \" \"\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"$""USER ' '\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="'           \"$""USER\"           '"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"           \"$""USER\"           \""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="'    aaa       \"$""USER\"    aaa       '"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"    aaa       \"$""USER\"    aaa       \""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="'\"' \"\"\"\" \"\"\"\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="'\"' \"''\" \"\"\"\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="aaa\"$""USER\"aaa"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="aaa \"$""USER\" aaa"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="aaa '\$USER' aaa"
 ARG="$COMMAND $LINE"
 M=$(./minishell -c "$ARG")
 B=$(bash -c "$ARG")
@@ -230,10 +693,26 @@ fi
 ((c++))
 
 COMMAND="echo"
-LINE=""
+LINE="aaa'\$USER'aaa"
 ARG="$COMMAND $LINE"
 M=$(./minishell -c "$ARG")
-B=$($COMMAND $LINE)
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";	
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"$""USER/1\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
 if [ "$M" == "$B" ];then
 	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
 	((cont++))
@@ -246,10 +725,10 @@ fi
 ((c++))
 
 COMMAND="echo"
-LINE="$USER/1"
+LINE="'$""USER/1'"
 ARG="$COMMAND $LINE"
 M=$(./minishell -c "$ARG")
-B=$($COMMAND $LINE)
+B=$(bash -c "$ARG")
 if [ "$M" == "$B" ];then
 	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
 	((cont++))
@@ -262,10 +741,10 @@ fi
 ((c++))
 
 COMMAND="echo"
-LINE="$USER/1"
+LINE="$""USER/1"
 ARG="$COMMAND $LINE"
 M=$(./minishell -c "$ARG")
-B=$($COMMAND $LINE)
+B=$(bash -c "$ARG")
 if [ "$M" == "$B" ];then
 	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
 	((cont++))
@@ -278,7 +757,233 @@ fi
 ((c++))
 
 COMMAND="echo"
-LINE="$USER/1"
+LINE="$""USER*1"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+
+COMMAND="echo"
+LINE="$""USER#1"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+
+COMMAND="echo"
+LINE="$""USER+1"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="$""USER=aaabbbccc"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="~"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="\"~\""
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="'~'"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="aaa~"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="~aaa"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="aaa~aaa"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="~/aaa"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="~/aaa/bbb"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="$""USER$""USER$""USER$""USER$""USER$""USER$""USER$""USER$""USER"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="$""PATH$""PATH$""PATH$""PATH$""PATH$""PATH$""PATH$""PATH$""PATH"
+ARG="$COMMAND $LINE"
+M=$(./minishell -c "$ARG")
+B=$(bash -c "$ARG")
+if [ "$M" == "$B" ];then
+	printf "${GREEN}$c.[OK] $ARG ${DEF_COLOR}\n";
+	((cont++))
+else
+	printf "${RED}$c.[KO] $ARG ${DEF_COLOR}\n";
+	echo Test $c expected:$B >> traces.txt
+	echo Test $c result:$M >> traces.txt
+	echo >> traces.txt
+fi
+((c++))
+
+COMMAND="echo"
+LINE="$""USER$""123USER$""USER"
 ARG="$COMMAND $LINE"
 M=$(./minishell -c "$ARG")
 B=$($COMMAND $LINE)
